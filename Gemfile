@@ -10,6 +10,8 @@ gem 'sinatra-activerecord'
 group :test do
   # testing
   gem 'rspec'
+  # web-specific test methods
+  gem 'rack-test'
 end
 
 group :development do

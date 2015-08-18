@@ -16,7 +16,24 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
+require 'rubygems'
+require 'bundler'
+require 'rack/test'
+
+Bundler.require
+
+Dir[File.expand_path("./app/*.rb")].each {|file| require file }
+
+module RSpecMixin
+  include Rack::Test::Methods
+  def app() UserApi end
+end
+
 RSpec.configure do |config|
+
+  config.include RSpecMixin
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

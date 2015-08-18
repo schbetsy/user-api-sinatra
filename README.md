@@ -7,3 +7,5 @@ Getting Started
 1. `bundle exec rake db:migrate`
 1. `rackup`
 1. Visit the app in the browser at `localhost:9292`
+
+To run the specs: `rspec`
