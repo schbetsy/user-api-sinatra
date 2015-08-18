@@ -3,5 +3,6 @@ require 'bundler'
 
 Bundler.require
 
-require './user_api'
+Dir["./app/*.rb"].each {|file| require file }
+
 run UserApi

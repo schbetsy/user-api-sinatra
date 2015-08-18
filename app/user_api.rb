@@ -5,6 +5,3 @@ class UserApi < Sinatra::Base
     "hi"
   end
 end
-
-class User < ActiveRecord::Base
-end
