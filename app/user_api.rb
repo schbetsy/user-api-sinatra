@@ -33,4 +33,15 @@ class UserApi < Sinatra::Base
   get '/' do
     json 'Hello World'
   end
+
+  post '/auth' do
+    user = User.find_by_username(params[:username])
+    password_entered = params[:password]
+    if user && user.password == password_entered
+      token = user.generate_token!
+      json token: token
+    else
+      json message: 'invalid username or password'
+    end
+  end
 end

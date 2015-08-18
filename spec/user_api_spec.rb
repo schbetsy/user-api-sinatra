@@ -64,4 +64,30 @@ RSpec.describe UserApi do
       end
     end
   end
+
+  describe 'post /auth' do
+    let!(:user) { User.create(username: 'betsy4', password: 'password') }
+
+    context 'given correct username and password for existing user' do
+      let(:user_params) { {username: 'betsy4', password: 'password' } }
+      it 'returns token' do
+        post '/auth', user_params
+        expect(JSON.parse(last_response.body)['token']).to be
+      end
+      it 'assigns token to user' do
+        post '/auth', user_params
+        user.reload
+        expect(user.auth_token).not_to be_nil
+      end
+    end
+
+    context 'given incorrect username and/or password' do
+      let(:user_params) { {username: 'betsy4', password: 'wrong_password' } }
+      it 'returns message' do
+        post '/auth', user_params
+        expect(JSON.parse(last_response.body)['message']).to match 'invalid'
+      end
+    end
+  end
+
 end
