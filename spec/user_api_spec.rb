@@ -51,4 +51,17 @@ RSpec.describe UserApi do
       end
     end
   end
+
+  describe 'put /user' do
+    let(:old_info) { {name: 'betsy'}.to_json }
+    let(:new_info) { {name: 'Inigo Montoya'}.to_json }
+    context 'given id of an existing user' do
+      let!(:user) { User.create(username: 'betsy2', password: 'password', info: old_info) }
+      it "returns the requested user's information" do
+        put "/user/#{user.id}", user: {info: new_info}
+        user.reload
+        expect(user.info).to match 'Inigo Montoya'
+      end
+    end
+  end
 end

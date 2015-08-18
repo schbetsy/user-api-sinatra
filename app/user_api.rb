@@ -19,6 +19,17 @@ class UserApi < Sinatra::Base
     end
   end
 
+  put '/user/:id' do
+    user = User.find_by_id(params[:id])
+    if user
+      new_info = params[:user][:info]
+      user.update_attributes(info: new_info)
+      json({username: user.username, info: user.info})
+    else
+      json({message: 'invalid user id'})
+    end
+  end
+
   get '/' do
     json 'Hello World'
   end
