@@ -28,4 +28,15 @@ RSpec.describe UserApi do
       end
     end
   end
+
+  describe 'post /user' do
+    context 'given username and password data' do
+      let(:user_params) { {username: 'schbetsy', password: 'password', info: {name: 'betsy'}.to_json} }
+      it 'creates new user in the database' do
+        expect do
+          post '/user', user: user_params
+        end.to change{User.count}.by(1)
+      end
+    end
+  end
 end

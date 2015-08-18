@@ -10,6 +10,11 @@ class UserApi < Sinatra::Base
     end
   end
 
+  post '/user' do
+    user = User.create(params[:user])
+    json({id: user.id})
+  end
+
   get '/' do
     json 'Hello World'
   end
