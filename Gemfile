@@ -14,6 +14,8 @@ group :test do
   gem 'rspec'
   # web-specific test methods
   gem 'rack-test'
+  # delete test records after test runs
+  gem 'database_cleaner'
 end
 
 group :development do

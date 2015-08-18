@@ -18,6 +18,7 @@ GEM
     backports (3.6.6)
     builder (3.2.2)
     coderay (1.1.0)
+    database_cleaner (1.4.1)
     diff-lcs (1.2.5)
     i18n (0.7.0)
     json (1.8.3)
@@ -71,6 +72,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  database_cleaner
   pry
   rack-test
   rspec
