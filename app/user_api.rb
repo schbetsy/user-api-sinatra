@@ -2,6 +2,6 @@ class UserApi < Sinatra::Base
   register Sinatra::ActiveRecordExtension
 
   get '/' do
-    "hi"
+    json 'Hello World'
   end
 end

@@ -2,6 +2,8 @@ source "http://rubygems.org/"
 
 # lightweight ruby-based web library
 gem 'sinatra'
+# methods for encoding json
+gem 'sinatra-contrib'
 # database
 gem 'sqlite3'
 # ORM

@@ -3,11 +3,11 @@ RSpec.describe UserApi do
     context 'not authenticated' do
       it 'outputs json' do
         get '/'
-        expect(last_response.content_type).to eq 'JSON'
+        expect(last_response.content_type).to eq 'application/json'
       end
       it 'contains "Hello World"' do
         get '/'
-        expect(last_response.body).to_match 'Hello World'
+        expect(last_response.body).to match 'Hello World'
       end
     end
   end
