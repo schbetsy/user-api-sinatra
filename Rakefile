@@ -5,6 +5,6 @@ namespace :db do
     require 'rubygems'
     require 'bundler'
     Bundler.require
-    require "./user_api"
+    Dir[File.expand_path("./app/*.rb")].each {|file| require file }
   end
 end

@@ -38,5 +38,17 @@ RSpec.describe UserApi do
         end.to change{User.count}.by(1)
       end
     end
+    context 'without username and password' do
+      let(:user_params) { {info: {name: 'betsy'}.to_json} }
+      it 'does not add a new user' do
+        expect do
+          post '/user', user: user_params
+        end.not_to change{User.count}
+      end
+      it 'returns an error' do
+        post '/user', user: user_params
+        expect(JSON.parse(last_response.body)['message']).to match 'invalid'
+      end
+    end
   end
 end

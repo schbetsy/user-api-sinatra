@@ -11,8 +11,12 @@ class UserApi < Sinatra::Base
   end
 
   post '/user' do
-    user = User.create(params[:user])
-    json({id: user.id})
+    user = User.new(params[:user])
+    if user.save
+      json({id: user.id})
+    else
+      json({message: 'invalid user. username and password required.'})
+    end
   end
 
   get '/' do
